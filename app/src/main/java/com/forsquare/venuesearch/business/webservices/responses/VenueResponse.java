@@ -12,16 +12,17 @@ import java.util.List;
  */
 
 public class VenueResponse {
-    @SerializedName("venues")
-    @Expose
     List<VenueDTO> venueDTOList;
-
-
-    @SerializedName("confident")
-    @Expose
-    boolean isConfident;
 
     public VenueResponse(){
 
+    }
+
+    public List<VenueDTO> getVenueDTOList() {
+        return venueDTOList;
+    }
+
+    public void setVenueDTOList(List<VenueDTO> venueDTOList) {
+        this.venueDTOList = venueDTOList;
     }
 }

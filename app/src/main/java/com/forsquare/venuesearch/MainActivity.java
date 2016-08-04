@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.forsquare.venuesearch.business.webservices.VenueService;
 import com.forsquare.venuesearch.business.webservices.responses.DataFetchListener;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onSuccess(@NonNull VenueResponse response) {
         if (response!= null){
-
+            Toast.makeText(MainActivity.this, "Received " + response.getVenueDTOList().size(), Toast.LENGTH_SHORT).show();
         }
     }
 

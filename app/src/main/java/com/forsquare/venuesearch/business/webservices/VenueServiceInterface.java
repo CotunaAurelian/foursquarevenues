@@ -46,9 +46,9 @@ public interface VenueServiceInterface {
     String COORDINATES_PARAMETER = "ll";
 
     /**
-     * OAuth parameter for the request
+     * Category parameter for the request
      */
-    String OAUTH_PARAMETER = "oauth_token";
+    String CATEGORY_ID_PARAMETER = "categoryId";
 
     /**
      * Client ID parameter for the request

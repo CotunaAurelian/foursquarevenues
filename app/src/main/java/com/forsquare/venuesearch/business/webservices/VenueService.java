@@ -1,17 +1,14 @@
 package com.forsquare.venuesearch.business.webservices;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.forsquare.venuesearch.business.webservices.converter.VenueDeserializer;
 import com.forsquare.venuesearch.business.webservices.responses.DataFetchListener;
-import com.forsquare.venuesearch.business.webservices.responses.VenueDTO;
 import com.forsquare.venuesearch.business.webservices.responses.VenueResponse;
 import com.google.gson.GsonBuilder;
 
 import java.net.HttpURLConnection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -88,6 +85,7 @@ public class VenueService {
         //Make the async calls
         Map<String, String> parameters = new HashMap<>();
         //We are going to return only products that are in stock
+        parameters.put(VenueServiceInterface.CATEGORY_ID_PARAMETER, categoryId);
         parameters.put(VenueServiceInterface.COORDINATES_PARAMETER, "40.7,-74");
         parameters.put(VenueServiceInterface.CLIENT_ID_PARAMETER, VenueServiceInterface.DEFAULT_CLIENT_ID);
         parameters.put(VenueServiceInterface.CLIENT_SECRET_PARAMETER, VenueServiceInterface.DEFAULT_CLIENT_SECRET);
