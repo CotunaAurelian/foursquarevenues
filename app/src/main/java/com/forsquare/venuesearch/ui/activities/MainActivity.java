@@ -1,4 +1,4 @@
-package com.forsquare.venuesearch;
+package com.forsquare.venuesearch.ui.activities;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,9 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.forsquare.venuesearch.R;
 import com.forsquare.venuesearch.business.webservices.VenueService;
 import com.forsquare.venuesearch.business.webservices.responses.DataFetchListener;
 import com.forsquare.venuesearch.business.webservices.responses.VenueResponse;
+import com.forsquare.venuesearch.model.CategoryDTO;
+import com.forsquare.venuesearch.ui.adapters.CategoriesAdapter;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, DataFetchListener {
 
@@ -31,6 +36,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private GridLayoutManager mGridLayoutManager;
 
+    /**
+     * Categories adapter for the recycler view
+     */
+    private CategoriesAdapter mAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +56,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         firstCategoryButton.setOnClickListener(this);
 
         initializeCategoriesRecyclerView();
+        populateCategories();
+    }
+
+    /**
+     * Populate the categories tiles
+     */
+    private void populateCategories() {
+        ArrayList<CategoryDTO> categoriesList = new ArrayList<>();
+        categoriesList.add(new CategoryDTO(R.drawable.ic_add_shopping_cart_white_48dp, "Shopping Cart"));
+        categoriesList.add(new CategoryDTO(R.drawable.ic_cake_white_48dp, "Cake"));
+        categoriesList.add(new CategoryDTO(R.drawable.ic_local_airport_white_48dp, "Airport"));
+        categoriesList.add(new CategoryDTO(R.drawable.ic_local_bar_white_48dp, "Bar"));
+        categoriesList.add(new CategoryDTO(R.drawable.ic_local_cafe_white_48dp, "Coffee"));
+        categoriesList.add(new CategoryDTO(R.drawable.ic_local_hotel_white_48dp, "Hotel"));
+        categoriesList.add(new CategoryDTO(R.drawable.ic_local_mall_white_48dp, "Mall"));
+        categoriesList.add(new CategoryDTO(R.drawable.ic_local_movies_white_48dp, "Cinema"));
+        categoriesList.add(new CategoryDTO(R.drawable.ic_star_border_white_48dp, "Favorites"));
+
+        mAdapter = new CategoriesAdapter(categoriesList);
+        mCategoriesRecyclerView.setAdapter(mAdapter);
     }
 
     /**
